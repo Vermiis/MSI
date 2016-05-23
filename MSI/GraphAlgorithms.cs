@@ -90,6 +90,7 @@ namespace MSI
                     Console.WriteLine(@"Visited Node:" + visited.Name);
 
                     //distance += visited.Distance;
+                    //ccc
                     if (visited.Name == endnode)
                     {
 

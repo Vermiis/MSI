@@ -67,6 +67,7 @@ namespace MSI
             GraphAlgorithms.DFSearch x = new GraphAlgorithms.DFSearch();
             x.Search(A, "F");
             GraphAlgorithms.MassSearch y = new GraphAlgorithms.MassSearch();
+            Console.WriteLine("Dystans");
             Console.WriteLine( y.SearchDistance(A, "F"));
         }
     }
