@@ -124,7 +124,7 @@ namespace MSI
         }
 
         //algorytm zachlanny
-        //graf z nazwami miejscowosci
+        //graf z nazwami miejscowosci b
         public class FirstBestSearch : SearchMethod
         {
             protected int Distances (List<Node> visited)
