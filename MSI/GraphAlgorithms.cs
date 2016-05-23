@@ -68,7 +68,7 @@ namespace MSI
             }
         }
 
-        public class MassSearch: SearchMethod
+        public class MassSearch : SearchMethod
         {
             protected override void InsertChildren(List<Node> children)
             {
@@ -76,12 +76,46 @@ namespace MSI
             }
             public double SearchDistance(Node startnode, string endnode)
             {
-                double distance=0;
+                double distance = 0;
+                _openList = new List<Node>();
+                _closedList = new List<Node>();
+
+                _openList.Add(startnode);
+
+
+                while (_openList.Any())
+                {
+
+                    var visited = _openList.FirstOrDefault();
+                    Console.WriteLine(@"Visited Node:" + visited.Name);
+
+                    //distance += visited.Distance;
+                    if (visited.Name == endnode)
+                    {
+
+                        break;
+                    }
+                    else
+                    {
+                        InsertChildren(visited.Children);
+
+                    }
+
+                    _openList.Remove(visited);
+                    _closedList.Add(visited);
+
+                    _openList = _openList
+                        .Where(x => !_closedList.Any(y => y.Name == x.Name)).ToList();
+
+
+                }
+
+
                 foreach (var item in _closedList)
                 {
-                    if (item.Name!=endnode)
+                    if (item.Name != endnode)
                     {
-                        distance += item.Distance;                     
+                        distance += item.Distance;
                     }
                 }
                 return distance;
